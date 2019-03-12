@@ -27,6 +27,7 @@ import ec.nbdemetra.ra.timeseries.TsDataVintages;
 import ec.tss.html.IHtmlElement;
 import ec.nbdemetra.ui.nodes.IdNodes;
 import ec.tss.TsCollection;
+import ec.tss.TsInformationType;
 import ec.tss.datatransfer.TssTransferSupport;
 import ec.tstoolkit.algorithm.IProcResults;
 import ec.tstoolkit.algorithm.IProcSpecification;
@@ -286,15 +287,16 @@ public class VintageTsProcessingViewer<T extends Comparable> extends DefaultProc
 
         @Override
         public boolean canImport(TransferSupport support) {
-            return TssTransferSupport.getInstance().canImport(support.getDataFlavors());
+            return TssTransferSupport.getDefault().canImport(support.getDataFlavors());
         }
 
         @Override
         public boolean importData(TransferHandler.TransferSupport support) {
-            TsCollection col = TssTransferSupport.getInstance().toTsCollection(support.getTransferable());
+            TsCollection col = TssTransferSupport.getDefault().toTsCollection(support.getTransferable());
             if (col == null) {
                 return false;
             }
+            col.query(TsInformationType.All);
             if (VintageTransferSupport.importData(col, getDocument())) {
                 refreshHeader();
                 registerDynamicViews();
