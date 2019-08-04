@@ -282,7 +282,7 @@ public class DescriptiveAnalysisRevisions extends AbstractResult {
                         for (final Iterator<RevisionId> iter = getRevisionIdSeries().iterator(); iter.hasNext();) {
                             final RevisionId rev = iter.next();
                             try {
-                                compmatrix.add(rev, method, quartile3(rev) - quartile1(rev));
+                                compmatrix.add(rev, method, NumericUtils.round(quartile3(rev) - quartile1(rev),DIGIT4,true));
                             } catch (TooSmallSampleException e) {
                                 compmatrix.add(rev, method, RevisionProcessingFactory.ERROR_DOUBLE);
                             }
@@ -479,7 +479,7 @@ public class DescriptiveAnalysisRevisions extends AbstractResult {
             if (runs.isValid()) {
                 return runs;
             } else {
-                throw new Exception("TestofRuns is invalid for ".concat(rev.toString()));
+                throw new Exception("Test of Runs is invalid for ".concat(rev.toString()));
             }
         } catch (StatException ex) {
             throw new Exception(ex);
@@ -616,17 +616,6 @@ public class DescriptiveAnalysisRevisions extends AbstractResult {
             acc[2] = 100 - acc[0] - acc[1];
         }
         return acc;
-    }
-
-    /**
-     *
-     * @param d1 the first value to compare
-     * @param d2 the second value to compare
-     * @return value +1 if d2 is greater than d1; value -1 if d2 is lower than
-     * d1; value 0 otherwise.
-     */
-    private int acceleration(Double d1, Double d2) {
-        return Double.compare(d1, d2) * -1;
     }
 
     private double getBiasMeanQuadraticError(RevisionId rev) {
