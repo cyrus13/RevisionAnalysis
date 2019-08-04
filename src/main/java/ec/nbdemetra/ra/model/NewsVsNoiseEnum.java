@@ -13,10 +13,10 @@ import java.util.Comparator;
  */
 public enum NewsVsNoiseEnum implements IntValue, Comparator<NewsVsNoiseEnum> {
 
-    NEWS_CORR(2,"Correlation of early etimates with the revision"),
-    NEWS_PVALUE(4,"The correlation of early etimates with the revision is not statiscally significant from zero"),
-    NOISE_CORR(6,"Correlation of later etimates with the revision"),
-    NOISE_PVALUE(8,"The correlation of later etimates with the revision is not statiscally significant from zero"),
+    NEWS_CORR(2,"Correlation of early estimates with the revision"),
+    NEWS_PVALUE(4,"The correlation of early estimates with the revision is not statistically significant from zero"),
+    NOISE_CORR(6,"Correlation of later estimates with the revision"),
+    NOISE_PVALUE(8,"The correlation of later estimates with the revision is not statistically significant from zero"),
     NEWS_N_OBS(10,"Observations"),
     NEWS_R2(12,"R squared"),
     NEWS_NR2(14,"n*(R squared)"),

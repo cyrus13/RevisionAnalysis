@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
  */
 public class VintagesSpreadSheetProvider extends AbstractFileLoader<VintagesSpreadSheetSource, VintagesSpreadSheetBean> implements IVintageDataSourceLoader {
 
-    public static final String SOURCE = "Vintages XCLPRVDR", DISPLAYNAME = "Vintages Spreadsheets Section";
+    public static final String SOURCE = "Vintages XCLPRVDR", DISPLAYNAME = "Vintages Spreadsheets";
     public static final String VERSION = "20111201";
     public static final IParam<DataSet, String> Y_SHEETNAME = Params.onString("", "sheetName");
     public static final IParam<DataSet, String> Z_SERIESNAME = Params.onString("", "seriesName");
